@@ -1,13 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 
-function Form() {
-  const [firstName, setFirstName] = useState("John");
-  const [lastName, setLastName] = useState("Henry");
-
+function Form({
+  firstName,
+  lastName,
+  onFirstNameChange,
+  onLastNameChange,
+  onNewsletterChange,
+  newsetter,
+}) {
   return (
     <form>
-      <input type="text" value={firstName} />
-      <input type="text" value={lastName} />
+      <label htmlFor="newsletter">Subscribe to our Newsletter?</label>
+      <input
+        type="checkbox"
+        id="newsletter"
+        onChange={onNewsletterChange}
+        checked={newsetter}
+      />
+      <input type="text" value={firstName} onChange={onFirstNameChange} />
+      <input type="text" value={lastName} onChange={onLastNameChange} />
       <button type="submit">Submit</button>
     </form>
   );
